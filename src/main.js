@@ -1,21 +1,30 @@
 import { createApp } from 'vue';
 
+// ===== Routing =====
+
+import router from './routing';
+
+// ===== State Management =====
+
+// ===== Entrypoint =====
+
 import App from './App.vue';
 
 // ==== PrimeVue ====
 
 import PrimeVue from 'primevue/config';
 
+import Panel from 'primevue/panel';
+import Menu from 'primevue/menu';
+import TieredMenu from 'primevue/tieredmenu';
 import CascadeSelect from 'primevue/cascadeselect';
+import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 
 import 'primevue/resources/themes/saga-blue/theme.css';       
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
-
-// ==== Bootstrap ====
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'primeflex/primeflex.css';
 
 // ==== Custom Css ====
 
@@ -43,11 +52,17 @@ dom.watch();
 
 const app = createApp(App);
 
+app.use(router);
+
 app.use(PrimeVue);
 
 app.component('font-awesome-icon', FontAwesomeIcon);
 
+app.component('Panel', Panel);
+app.component('Menu', Menu);
+app.component('TieredMenu', TieredMenu);
 app.component('CascadeSelect', CascadeSelect);
+app.component('InputText', InputText);
 app.component('Button', Button);
 
 app.mount('#app');

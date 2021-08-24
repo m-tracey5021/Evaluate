@@ -1,13 +1,13 @@
 <template>
 
-    <div class="d-flex flex-row justify-content-center">
-        <div class="m-2">
+    <div class="p-d-flex p-flex-row p-jc-center p-mx-2">
+        <div class="p-m-2">
             <CascadeSelect v-model="currentSymbol" :options="symbolTypes" optionLabel="symbolSubType" optionGroupLabel="type" :optionGroupChildren="['symbolSubTypes']" @change="updateExpression()" placeholder="Select symbol" style="minWidth: 14rem"></CascadeSelect>
         </div>
-        <div class="d-flex flex-row justify-content-between align-items-center">
+        <div class="p-d-flex p-flex-row p-jc-center p-mx-2">
             <div v-for="(symbol, index) in expression" :key="symbol">
-                <div class="mx-1 grow pointer" v-on:click="updateIndex(index)">
-                    <div v-if="index == currentIndex" class="mt-3">
+                <div class="p-mx-1 grow pointer" v-on:click="updateIndex(index)">
+                    <div v-if="index == currentIndex" class="p-mt-3">
                         <p><mark>{{ symbol.value }}</mark></p>
                     </div>
                     <div v-else>
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="m-2"><Button label="Complete" v-on:click="printExpression()"/></div>
+        <div class="p-m-2"><Button label="Complete" v-on:click="printExpression()"/></div>
     </div>   
     
 </template>

@@ -1,27 +1,27 @@
 <template>
-    <div class="d-flex flex-row justify-content-center mt-5">
-        <ExpressionBuilder/>
+
+    <div>
+        <ExpressionPanel/>
     </div>
-    
-    
-    
-    
+
 </template>
 
 <script>
 
-import ExpressionBuilder from './components/ExpressionBuilder.vue';
+import ExpressionPanel from './components/ExpressionPanel.vue';
 
 export default {
     name: "App",
     components: {
-        ExpressionBuilder
+        ExpressionPanel
     },
     data() {
         return {
-            checked: true,
-            value1: true,
+            
         };
+    },
+    methods: {
+        
     }
 };
 </script>
