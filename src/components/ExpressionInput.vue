@@ -12,7 +12,7 @@
             <InputText type="text" v-model="expression" placeholder="Expression" />
         </div>
         <div class="p-mx-1">
-            <Button label="Complete" v-on:click="completeExpression()"/>
+            <Button label="Complete" v-on:click="completeExpression()" :disabled="validationError"/>
         </div>
         
         
@@ -32,17 +32,33 @@ export default {
     data() {
         return {
             variableName: '',
-            expression: ''
+            expression: '',
         }
     },
     methods: {
+        checkValidation: function(){
+            if (this.variableName !== '' && this.expression !== ''){
+                this.validationError = false;
+            }else{
+                this.validationError = true;
+            }
+        },
         completeExpression: function(){
             this.$emit('expressionCompleted', this.variableName, this.expression);
             this.variableName = '';
             this.expression = '';
         }
     },
-    emits: ['expressionCompleted']
+    emits: ['expressionCompleted'],
+    computed: {
+        validationError: function(){
+            if (this.variableName !== '' && this.expression !== ''){
+                return false;
+            }else{
+                return true;
+            }
+        }
+    }
 };
 </script>
 

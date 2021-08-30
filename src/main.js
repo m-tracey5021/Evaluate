@@ -20,6 +20,10 @@ import TieredMenu from 'primevue/tieredmenu';
 import CascadeSelect from 'primevue/cascadeselect';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
+import Divider from 'primevue/divider';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import OverlayPanel from 'primevue/overlaypanel';
 
 import 'primevue/resources/themes/saga-blue/theme.css';       
 import 'primevue/resources/primevue.min.css';
@@ -64,5 +68,9 @@ app.component('TieredMenu', TieredMenu);
 app.component('CascadeSelect', CascadeSelect);
 app.component('InputText', InputText);
 app.component('Button', Button);
+app.component('Divider', Divider);
+app.component('DataTable', DataTable);
+app.component('Column', Column);
+app.component('OverlayPanel', OverlayPanel);
 
 app.mount('#app');

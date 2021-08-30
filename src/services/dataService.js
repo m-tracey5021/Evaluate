@@ -25,10 +25,15 @@ export async function sendPostRequest(request, object){
         const response = await fetch(request, {
             method: 'POST',
             credentials: 'same-origin',
-            body: JSON.stringify(object)
-        });
+            headers: {
+                'Content-Type': 'application/json'
 
-        const result = await response.json(); // response should be an object or id or something
+            },
+            body: JSON.stringify(object),
+        });
+        console.log(result);
+        const result = await response.json();
+        console.log(result);
 
         return result;
 
