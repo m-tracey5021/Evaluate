@@ -101,7 +101,7 @@ export default {
                         { label: 'Sum Like Terms', command:() => { this.sumLikeTerms(); } },
                         { label: 'Distribute', command:() => { this.distribute(); } },
                         { label: 'Cancel', command:() => { this.cancel(); } },
-                        { label: 'Factor', command:() => { console.log('Factor'); } },
+                        { label: 'Factor', command:() => { this.factor(); } },
                         { label: 'Simplify', command:() => { console.log('Simplify'); } }
                     ]
                 },
@@ -195,6 +195,10 @@ export default {
         cancel: async function(){
             var result = await commandService.cancel(this.expressionSelected.expression);
             this.expressions.push(this.mapCommandResultToExpression(this.expressionSelected.expression, 'Cancel', result));
+        },
+        factor: async function(){
+            var result = await commandService.factor(this.expressionSelected.expression);
+            this.expressions.push(this.mapCommandResultToExpression(this.expressionSelected.expression, 'Factor', result));
         },
         evaluateConstants: async function(){
             var result = await commandService.evaluateConstants(this.expressionSelected.expression);

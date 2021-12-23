@@ -1,80 +1,44 @@
 import * as dataService from './dataService';
 
+import { endpoints } from '../config/apiEndpointConfig';
+
 export async function sumLikeTerms(expression){
 
-    var url = 'https://localhost:5001/command/sumliketerms/' + expression;
+    // var url = 'https://localhost:8000/command/sumliketerms/' + expression;
 
-    return await dataService.sendGetRequest(url, false);
+    // return await dataService.sendGetRequest(url, false);
+
+    return await dataService.sendPostRequest(endpoints.sumliketerms, getApiRequest(expression));
 }
 
 export async function distribute(expression){
 
-    var url = 'https://localhost:5001/command/distribute/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
+    return await dataService.sendPostRequest(endpoints.distribute, getApiRequest(expression));
 }
 
 export async function cancel(expression){
 
-    var url = 'https://localhost:5001/command/cancel/' + expression;
+    return await dataService.sendPostRequest(endpoints.cancel, getApiRequest(expression));
+}
 
-    return await dataService.sendGetRequest(url, false);
+export async function factor(expression){
+
+    return await dataService.sendPostRequest(endpoints.factor, getApiRequest(expression));
 }
 
 export async function evaluateConstants(expression){
 
-    var url = 'https://localhost:5001/command/evaluateconstants/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
+    return await dataService.sendPostRequest(endpoints.evaluateConstants, getApiRequest(expression));
 }
 
-export async function applyExponentRules(expression){
+export async function applyExponentIdentities(expression){
 
-    var url = 'https://localhost:5001/command/applyexponentrules/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
+    return await dataService.sendPostRequest(endpoints.applyExponentIdentities, getApiRequest(expression));
 }
 
-export async function applyExponentRuleOne(expression){
+export async function applyAlgebraicIdentities(expression){
 
-    var url = 'https://localhost:5001/command/er1/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
-}
-
-export async function applyExponentRuleTwo(expression){
-
-    var url = 'https://localhost:5001/command/er2/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
-}
-
-export async function applyExponentRuleThree(expression){
-
-    var url = 'https://localhost:5001/command/er3/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
-}
-
-export async function applyExponentRuleFour(expression){
-
-    var url = 'https://localhost:5001/command/er4/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
-}
-
-export async function applyExponentRuleFive(expression){
-
-    var url = 'https://localhost:5001/command/er5/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
-}
-
-export async function applyExponentRuleSix(expression){
-
-    var url = 'https://localhost:5001/command/er6/' + expression;
-
-    return await dataService.sendGetRequest(url, false);
+    return await dataService.sendPostRequest(endpoints.applyAlgebraicIdentities, getApiRequest(expression));
 }
 
 export async function isEqual(expression, other){
@@ -89,4 +53,12 @@ export async function isEqualByBase(expression, other){
     var url = 'https://localhost:5001/command/isequalbybase/' + expression + '/' + other;
 
     return await dataService.sendGetRequest(url, false);
+}
+
+function getApiRequest(expression) {
+
+    return {
+
+        "expression": expression
+    }
 }
